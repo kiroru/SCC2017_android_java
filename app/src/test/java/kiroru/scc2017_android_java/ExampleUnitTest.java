@@ -1,4 +1,4 @@
-package sak.scc2017_android_java;
+package kiroru.scc2017_android_java;
 
 import org.junit.Test;
 
