@@ -2,11 +2,13 @@ package kiroru.scc2017_android_java;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -47,6 +49,20 @@ public class MainActivity extends AppCompatActivity {
 
         ListView lv = (ListView)findViewById(R.id.listView);
         lv.setAdapter(new MyAdapter(this));
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Item item = items.get(position);
+
+                Intent i = new Intent(MainActivity.this, DetailActivity.class);
+                i.putExtra("imageUrl", item.imageUrl);
+                i.putExtra("jname", item.jname);
+                i.putExtra("ename", item.ename);
+
+                startActivity(i);
+            }
+        });
     }
 
 
